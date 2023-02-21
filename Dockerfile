@@ -1,4 +1,4 @@
-FROM alpine:3.16
+FROM alpine:latest
 
 RUN apk -U add bind-tools bind-dnssec-tools bind-dnssec-root && rm -rf /var/cache/apk/*
 
