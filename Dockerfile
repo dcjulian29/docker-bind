@@ -10,8 +10,10 @@ RUN apk -U upgrade && \
   rm -rf /var/cache/apk/* && \
   rm -f /etc/bind/rndc.key
 
-VOLUME /home/root
+COPY docker-entrypoint.sh /docker-entrypoint.sh
 
-WORKDIR /home/root
+VOLUME /data
 
-ENTRYPOINT [ "/bin/sh" ]
+WORKDIR /data
+
+ENTRYPOINT [ "/docker-entrypoint.sh" ]
