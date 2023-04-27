@@ -9,10 +9,14 @@ docker build  --progress plain --build-arg VERSION=%VERSION% -t dcjulian29/bind:
 
 if %errorlevel% neq 0 GOTO FINAL
 
-::docker tag dcjulian29/bind:%VERSION% dcjulian29/bind:latest
+docker tag dcjulian29/bind:%VERSION% dcjulian29/bind:latest
 
 :FINAL
 
 popd
+
+set IMAGE_VERSION=%VERSION%
+
+goreleaser --snapshot --skip-publish --clean
 
 endlocal

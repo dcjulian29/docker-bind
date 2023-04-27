@@ -1,6 +1,22 @@
 {
   "cSpell.words": [
     "CHOCO",
-    "dcjulian"
+    "chocolateys",
+    "dcjulian",
+    "ddns",
+    "dnssec",
+    "dnstap",
+    "dsfromkey",
+    "goarch",
+    "keyfromlable",
+    "ldflags",
+    "mdig",
+    "nfpms",
+    "nsec",
+    "nslookup",
+    "nsupdate",
+    "rndc",
+    "rrchecker",
+    "tsig"
   ]
 }

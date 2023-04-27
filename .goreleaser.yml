@@ -1,0 +1,335 @@
+---
+before:
+  hooks:
+    - go mod tidy
+builds:
+  - id: ddns-confgen
+    binary: ddns-confgen
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - windows
+      - linux
+      - darwin
+    goarch:
+      - amd64
+    ldflags: -s -w -X main.apk={{ if index .Env "IMAGE_VERSION" }}{{ .Env.IMAGE_VERSION }}{{ else }}latest{{ end }}
+  - id: dig
+    binary: dig
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - windows
+      - linux
+      - darwin
+    goarch:
+      - amd64
+    ldflags: -s -w -X main.apk={{ if index .Env "IMAGE_VERSION" }}{{ .Env.IMAGE_VERSION }}{{ else }}latest{{ end }}
+  - id: dnssec-cds
+    binary: dnssec-cds
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - windows
+      - linux
+      - darwin
+    goarch:
+      - amd64
+    ldflags: -s -w -X main.apk={{ if index .Env "IMAGE_VERSION" }}{{ .Env.IMAGE_VERSION }}{{ else }}latest{{ end }}
+  - id: dnssec-dsfromkey
+    binary: dnssec-dsfromkey
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - windows
+      - linux
+      - darwin
+    goarch:
+      - amd64
+    ldflags: -s -w -X main.apk={{ if index .Env "IMAGE_VERSION" }}{{ .Env.IMAGE_VERSION }}{{ else }}latest{{ end }}
+  - id: dnssec-importkey
+    binary: dnssec-importkey
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - windows
+      - linux
+      - darwin
+    goarch:
+      - amd64
+    ldflags: -s -w -X main.apk={{ if index .Env "IMAGE_VERSION" }}{{ .Env.IMAGE_VERSION }}{{ else }}latest{{ end }}
+  - id: dnssec-keyfromlable
+    binary: dnssec-keyfromlable
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - windows
+      - linux
+      - darwin
+    goarch:
+      - amd64
+    ldflags: -s -w -X main.apk={{ if index .Env "IMAGE_VERSION" }}{{ .Env.IMAGE_VERSION }}{{ else }}latest{{ end }}
+  - id: dnssec-keygen
+    binary: dnssec-keygen
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - windows
+      - linux
+      - darwin
+    goarch:
+      - amd64
+    ldflags: -s -w -X main.apk={{ if index .Env "IMAGE_VERSION" }}{{ .Env.IMAGE_VERSION }}{{ else }}latest{{ end }}
+  - id: dnssec-revoke
+    binary: dnssec-revoke
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - windows
+      - linux
+      - darwin
+    goarch:
+      - amd64
+    ldflags: -s -w -X main.apk={{ if index .Env "IMAGE_VERSION" }}{{ .Env.IMAGE_VERSION }}{{ else }}latest{{ end }}
+  - id: dnssec-settime
+    binary: dnssec-settime
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - windows
+      - linux
+      - darwin
+    goarch:
+      - amd64
+    ldflags: -s -w -X main.apk={{ if index .Env "IMAGE_VERSION" }}{{ .Env.IMAGE_VERSION }}{{ else }}latest{{ end }}
+  - id: dnssec-signzone
+    binary: dnssec-signzone
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - windows
+      - linux
+      - darwin
+    goarch:
+      - amd64
+    ldflags: -s -w -X main.apk={{ if index .Env "IMAGE_VERSION" }}{{ .Env.IMAGE_VERSION }}{{ else }}latest{{ end }}
+  - id: dnssec-verify
+    binary: dnssec-verify
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - windows
+      - linux
+      - darwin
+    goarch:
+      - amd64
+    ldflags: -s -w -X main.apk={{ if index .Env "IMAGE_VERSION" }}{{ .Env.IMAGE_VERSION }}{{ else }}latest{{ end }}
+  - id: dnstap-read
+    binary: dnstap-read
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - windows
+      - linux
+      - darwin
+    goarch:
+      - amd64
+    ldflags: -s -w -X main.apk={{ if index .Env "IMAGE_VERSION" }}{{ .Env.IMAGE_VERSION }}{{ else }}latest{{ end }}
+  - id: host
+    binary: host
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - windows
+      - linux
+      - darwin
+    goarch:
+      - amd64
+    ldflags: -s -w -X main.apk={{ if index .Env "IMAGE_VERSION" }}{{ .Env.IMAGE_VERSION }}{{ else }}latest{{ end }}
+  - id: mdig
+    binary: mdig
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - windows
+      - linux
+      - darwin
+    goarch:
+      - amd64
+    ldflags: -s -w -X main.apk={{ if index .Env "IMAGE_VERSION" }}{{ .Env.IMAGE_VERSION }}{{ else }}latest{{ end }}
+  - id: named-checkconf
+    binary: named-checkconf
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - windows
+      - linux
+      - darwin
+    goarch:
+      - amd64
+    ldflags: -s -w -X main.apk={{ if index .Env "IMAGE_VERSION" }}{{ .Env.IMAGE_VERSION }}{{ else }}latest{{ end }}
+  - id: named-checkzone
+    binary: named-checkzone
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - windows
+      - linux
+      - darwin
+    goarch:
+      - amd64
+    ldflags: -s -w -X main.apk={{ if index .Env "IMAGE_VERSION" }}{{ .Env.IMAGE_VERSION }}{{ else }}latest{{ end }}
+  - id: named-compilezone
+    binary: named-compilezone
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - windows
+      - linux
+      - darwin
+    goarch:
+      - amd64
+    ldflags: -s -w -X main.apk={{ if index .Env "IMAGE_VERSION" }}{{ .Env.IMAGE_VERSION }}{{ else }}latest{{ end }}
+  - id: named-journalprint
+    binary: named-journalprint
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - windows
+      - linux
+      - darwin
+    goarch:
+      - amd64
+    ldflags: -s -w -X main.apk={{ if index .Env "IMAGE_VERSION" }}{{ .Env.IMAGE_VERSION }}{{ else }}latest{{ end }}
+  - id: named-rrchecker
+    binary: named-rrchecker
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - windows
+      - linux
+      - darwin
+    goarch:
+      - amd64
+    ldflags: -s -w -X main.apk={{ if index .Env "IMAGE_VERSION" }}{{ .Env.IMAGE_VERSION }}{{ else }}latest{{ end }}
+  - id: nsec3hash
+    binary: nsec3hash
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - windows
+      - linux
+      - darwin
+    goarch:
+      - amd64
+    ldflags: -s -w -X main.apk={{ if index .Env "IMAGE_VERSION" }}{{ .Env.IMAGE_VERSION }}{{ else }}latest{{ end }}
+  - id: nslookup
+    binary: nslookup
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - windows
+      - linux
+      - darwin
+    goarch:
+      - amd64
+    ldflags: -s -w -X main.apk={{ if index .Env "IMAGE_VERSION" }}{{ .Env.IMAGE_VERSION }}{{ else }}latest{{ end }}
+  - id: nsupdate
+    binary: nsupdate
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - windows
+      - linux
+      - darwin
+    goarch:
+      - amd64
+    ldflags: -s -w -X main.apk={{ if index .Env "IMAGE_VERSION" }}{{ .Env.IMAGE_VERSION }}{{ else }}latest{{ end }}
+  - id: rndc
+    binary: rndc
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - windows
+      - linux
+      - darwin
+    goarch:
+      - amd64
+    ldflags: -s -w -X main.apk={{ if index .Env "IMAGE_VERSION" }}{{ .Env.IMAGE_VERSION }}{{ else }}latest{{ end }}
+  - id: rndc-confgen
+    binary: rndc-confgen
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - windows
+      - linux
+      - darwin
+    goarch:
+      - amd64
+    ldflags: -s -w -X main.apk={{ if index .Env "IMAGE_VERSION" }}{{ .Env.IMAGE_VERSION }}{{ else }}latest{{ end }}
+  - id: tsig-keygen
+    binary: tsig-keygen
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - windows
+      - linux
+      - darwin
+    goarch:
+      - amd64
+    ldflags: -s -w -X main.apk={{ if index .Env "IMAGE_VERSION" }}{{ .Env.IMAGE_VERSION }}{{ else }}latest{{ end }}
+archives:
+  - files:
+      - LICENSE
+    builds_info:
+      group: root
+      owner: root
+      mode: 0755
+    name_template: "dcjulian29.apps.bind-via-docker_{{ .Version }}_{{ .Os }}"
+    format_overrides:
+      - format: zip
+        goos: windows
+nfpms:
+  - package_name: dcjulian29.apps.bind-via-docker
+    file_name_template: "{{ .PackageName }}_{{ .Version }}"
+    homepage: https://github.com/dcjulian29/docker-bind/
+    maintainer: Julian Easterling <julian@julianscorner.com>
+    license: Apache 2.0
+    dependencies:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+    description: |-
+      bind-via-docker allows the execution of bind9 binaries via a Docker container.
+    formats:
+      - apk
+      - deb
+      - rpm
+    bindir: /usr/local/bin
+    overrides:
+      apk:
+        dependencies:
+          - docker
+chocolateys:
+  - name: dcjulian29.apps.bind-via-docker
+    authors: Julian Easterling <julian@julianscorner.com>
+    project_url: https://github.com/dcjulian29/docker-bind/
+    copyright: 2023 Julian Easterling julian@julianscorner.com
+    license_url: https://github.com/dcjulian29/docker-bind/blob/main/LICENSE
+    require_license_acceptance: false
+    bug_tracker_url: https://github.com/dcjulian29/docker-bind/issues
+    description: |
+      bind-via-docker allows the execution of bind9 binaries via a Docker container.
+    dependencies:
+      - id: docker-desktop
+    api_key: "{{ .Env.CHOCO_API_KEY }}"
+    source_repo: "https://www.myget.org/F/dcjulian29-chocolatey/"
+    skip_publish: false
+snapshot:
+  name_template: "{{ incpatch .Version }}-next"
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - '^docs:'
+      - '^test:'
