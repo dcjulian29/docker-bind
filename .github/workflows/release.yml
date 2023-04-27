@@ -1,9 +1,9 @@
-name: Release
+name: Release Docker Image
 
 on:
   push:
     tags:
-      - '[0-9]*'
+      - '[0-9].*'
 
 jobs:
   release:
@@ -27,6 +27,8 @@ jobs:
         with:
           context: .
           push: true
+          build-args: |
+            VERSION=${{ steps.vars.outputs.version }}
           tags: |
             dcjulian29/bind:${{ steps.vars.outputs.version }}
             dcjulian29/bind:latest
