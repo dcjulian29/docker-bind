@@ -20,6 +20,10 @@ jobs:
 
       - name: Grab the version to use.
         id: vars
+        run: echo "version=$(cat VERSION)" >> $GITHUB_OUTPUT
+
+      - name: Grab the image version to use.
+        id: image
         run: echo "version=$(echo ${GITHUB_REF:10})" >> $GITHUB_OUTPUT
 
       - name: Build and push the Docker image.
@@ -30,5 +34,5 @@ jobs:
           build-args: |
             VERSION=${{ steps.vars.outputs.version }}
           tags: |
-            dcjulian29/bind:${{ steps.vars.outputs.version }}
+            dcjulian29/bind:${{ steps.image.outputs.version }}
             dcjulian29/bind:latest
