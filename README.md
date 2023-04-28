@@ -4,6 +4,6 @@
 
 [![Docker](https://github.com/dcjulian29/docker-bind/actions/workflows/docker.yml/badge.svg)](https://github.com/dcjulian29/docker-bind/actions/workflows/docker.yml) [![Release](https://github.com/dcjulian29/docker-bind/actions/workflows/release.yml/badge.svg)](https://github.com/dcjulian29/docker-bind/actions/workflows/release.yml) [![Build](https://github.com/dcjulian29/docker-bind/actions/workflows/build.yml/badge.svg)](https://github.com/dcjulian29/docker-bind/actions/workflows/build.yml) [![Tool](https://github.com/dcjulian29/docker-bind/actions/workflows/tool.yml/badge.svg)](https://github.com/dcjulian29/docker-bind/actions/workflows/tool.yml)
 
-A container contains the client utilities for BIND (Berkeley Internet Name Domain). This container tries to follow the corresponding alpine package release at [Alpine Packages](https://pkgs.alpinelinux.org/packages?name=bind*&branch=v3.17&repo=&arch=&maintainer=).
+A container that contains the client utilities for BIND (Berkeley Internet Name Domain). This container tries to follow the corresponding alpine package release at [Alpine Packages](https://pkgs.alpinelinux.org/packages?name=bind*&branch=v3.17&repo=&arch=&maintainer=).
 
 Also included in this repository are aliases executable binaries that allow a person to run the bind client tools via the Docker container.
