@@ -69,8 +69,8 @@ func main() {
 	cmd.Stdout = os.Stdout
 
 	if err := cmd.Run(); err != nil {
-		fmt.Printf("\n\033[1;31m%s\033[0m\n\n", err)
-		os.Exit(1)
+		fmt.Printf("\n\033[1;31m%s\033[0m\n", "An error occurred executing docker...")
+		os.Exit(cmd.ProcessState.ExitCode())
 	}
 
 	os.Exit(0)
