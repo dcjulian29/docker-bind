@@ -56,9 +56,7 @@ func main() {
 
 	if len(args) > 0 {
 		docker = append(docker, args...)
-	}
 
-	if len(args) > 0 {
 		if args[0] == "--image-version" {
 			fmt.Println(apk)
 			os.Exit(0)

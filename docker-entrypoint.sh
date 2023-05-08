@@ -13,7 +13,7 @@ if [[ -d "$DIR" ]]; then
   /bin/run-parts "\$DIR"
 fi
 
-if [[ ! -z "$@" ]]; then
+if [[ ! -z "$1" ]]; then
   exec "$@"
 else
   /bin/sh
