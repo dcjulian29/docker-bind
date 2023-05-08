@@ -6,17 +6,11 @@ on:
     paths:
       - Dockerfile
       - VERSION
-    tags:
-      - '![0-9].*'
-      - "**"
 
   pull_request:
     paths:
       - Dockerfile
       - VERSION
-    tags:
-      - '![0-9].*'
-      - "**"
 
   workflow_dispatch:
 
