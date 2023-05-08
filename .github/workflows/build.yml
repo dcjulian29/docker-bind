@@ -6,12 +6,18 @@ on:
       - '**.go'
       - 'go.mod'
       - 'go.sum'
+    tags:
+      - '![0-9].*'
+      - "**"
 
   pull_request:
     paths:
       - '**.go'
       - 'go.mod'
       - 'go.sum'
+    tags:
+      - '![0-9].*'
+      - "**"
 
   workflow_dispatch:
 

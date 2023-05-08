@@ -4,6 +4,7 @@ on:
   push:
     tags:
       - "[0-9].*"
+      - "!**"
 
 jobs:
   tool:
@@ -21,7 +22,7 @@ jobs:
           cache-dependency-path: ${{ github.workspace }}/go.sum
           go-version-file: ${{ github.workspace }}/go.mod
 
-      - name: Grab the version to use.
+      - name: Grab the image version to use.
         id: vars
         run: |
           Write-Output "version=$(Get-Content ${{ github.workspace }}\VERSION)" `

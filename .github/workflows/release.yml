@@ -19,12 +19,8 @@ jobs:
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
       - name: Grab the version to use.
-        id: vars
+        id: v1
         run: echo "version=$(cat VERSION)" >> $GITHUB_OUTPUT
-
-      - name: Grab the image version to use.
-        id: image
-        run: echo "version=$(echo ${GITHUB_REF:10})" >> $GITHUB_OUTPUT
 
       - name: Build and push the Docker image.
         uses: docker/build-push-action@v3
@@ -32,7 +28,7 @@ jobs:
           context: .
           push: true
           build-args: |
-            VERSION=${{ steps.vars.outputs.version }}
+            VERSION=${{ steps.v1.outputs.version }}
           tags: |
-            dcjulian29/bind:${{ steps.image.outputs.version }}
+            dcjulian29/bind:${{ steps.v1.outputs.version }}
             dcjulian29/bind:latest
