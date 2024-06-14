@@ -1,5 +1,8 @@
 FROM alpine:3.18
 
+LABEL org.opencontainers.image.source="https://github.com/dcjulian29/docker-bind"
+LABEL org.opencontainers.image.description="A Docker Container and execution tool for BIND"
+
 ARG VERSION
 
 COPY docker-entrypoint.sh /docker-entrypoint.sh

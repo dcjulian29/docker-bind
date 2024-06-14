@@ -1,37 +1,64 @@
 ---
-name: Release Tool
+name: BIND Tools
 
 on:
   push:
-    tags:
-      - "[0-9].*"
 
 jobs:
-  tool:
+  build:
     runs-on: windows-2022
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
       - run: git fetch --force --tags
 
-      - uses: actions/setup-go@v4
+      - uses: actions/setup-go@v5
         with:
           cache-dependency-path: ${{ github.workspace }}/go.sum
           go-version-file: ${{ github.workspace }}/go.mod
 
-      - name: Grab the image version to use.
-        id: v1
+      - name: Grab the version to use.
+        id: vars
         run: |
           Write-Output "version=$(Get-Content ${{ github.workspace }}\VERSION)" `
             | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding UTF8 -Append
 
-      - uses: goreleaser/goreleaser-action@v4
+      - uses: goreleaser/goreleaser-action@v6
+        with:
+          args: build --snapshot --clean
+        env:
+          IMAGE_VERSION: ${{ steps.vars.outputs.version }}
+
+  release:
+    if: contains(github.ref, 'tags/')
+    needs: [build]
+    runs-on: windows-2022
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - run: git fetch --force --tags
+
+      - uses: actions/setup-go@v5
+        with:
+          cache-dependency-path: ${{ github.workspace }}/go.sum
+          go-version-file: ${{ github.workspace }}/go.mod
+
+      - name: Grab the version to use.
+        id: vars
+        run: |
+          Write-Output "version=$(Get-Content ${{ github.workspace }}\VERSION)" `
+            | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding UTF8 -Append
+
+      - uses: goreleaser/goreleaser-action@v6
         with:
           args: release
         env:
           GITHUB_TOKEN: ${{ github.token }}
           CHOCO_API_KEY: ${{ secrets.CHOCO_API_KEY }}
-          IMAGE_VERSION: ${{ steps.v1.outputs.version }}
+          IMAGE_VERSION: ${{ steps.vars.outputs.version }}
