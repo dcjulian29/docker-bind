@@ -1,3 +1,5 @@
 module github.com/dcjulian29/docker-bind
 
-go 1.20
+go 1.25.0
+
+require github.com/dcjulian29/go-toolbox v0.22.0
