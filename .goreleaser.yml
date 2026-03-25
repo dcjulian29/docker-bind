@@ -1,9 +1,12 @@
 ---
+version: 2
 env:
   - IMAGE_VERSION={{ if index .Env "IMAGE_VERSION" }}{{ .Env.IMAGE_VERSION }}{{ else }}latest{{ end }}
 before:
   hooks:
     - go mod tidy
+    - go mod verify
+    - go vet
 builds:
   - id: ddns-confgen
     binary: ddns-confgen
@@ -15,7 +18,7 @@ builds:
       - darwin
     goarch:
       - amd64
-    ldflags: -s -w -X main.apk={{ .Env.IMAGE_VERSION }}
+    ldflags: -s -w -X main.imageVersion={{ .Env.IMAGE_VERSION }}
   - id: dig
     binary: dig
     env:
@@ -26,7 +29,7 @@ builds:
       - darwin
     goarch:
       - amd64
-    ldflags: -s -w -X main.apk={{ .Env.IMAGE_VERSION }}
+    ldflags: -s -w -X main.imageVersion={{ .Env.IMAGE_VERSION }}
   - id: dnssec-cds
     binary: dnssec-cds
     env:
@@ -37,7 +40,7 @@ builds:
       - darwin
     goarch:
       - amd64
-    ldflags: -s -w -X main.apk={{ .Env.IMAGE_VERSION }}
+    ldflags: -s -w -X main.imageVersion={{ .Env.IMAGE_VERSION }}
   - id: dnssec-dsfromkey
     binary: dnssec-dsfromkey
     env:
@@ -48,7 +51,7 @@ builds:
       - darwin
     goarch:
       - amd64
-    ldflags: -s -w -X main.apk={{ .Env.IMAGE_VERSION }}
+    ldflags: -s -w -X main.imageVersion={{ .Env.IMAGE_VERSION }}
   - id: dnssec-importkey
     binary: dnssec-importkey
     env:
@@ -59,7 +62,7 @@ builds:
       - darwin
     goarch:
       - amd64
-    ldflags: -s -w -X main.apk={{ .Env.IMAGE_VERSION }}
+    ldflags: -s -w -X main.imageVersion={{ .Env.IMAGE_VERSION }}
   - id: dnssec-keyfromlable
     binary: dnssec-keyfromlable
     env:
@@ -70,7 +73,7 @@ builds:
       - darwin
     goarch:
       - amd64
-    ldflags: -s -w -X main.apk={{ .Env.IMAGE_VERSION }}
+    ldflags: -s -w -X main.imageVersion={{ .Env.IMAGE_VERSION }}
   - id: dnssec-keygen
     binary: dnssec-keygen
     env:
@@ -81,7 +84,7 @@ builds:
       - darwin
     goarch:
       - amd64
-    ldflags: -s -w -X main.apk={{ .Env.IMAGE_VERSION }}
+    ldflags: -s -w -X main.imageVersion={{ .Env.IMAGE_VERSION }}
   - id: dnssec-revoke
     binary: dnssec-revoke
     env:
@@ -92,7 +95,7 @@ builds:
       - darwin
     goarch:
       - amd64
-    ldflags: -s -w -X main.apk={{ .Env.IMAGE_VERSION }}
+    ldflags: -s -w -X main.imageVersion={{ .Env.IMAGE_VERSION }}
   - id: dnssec-settime
     binary: dnssec-settime
     env:
@@ -103,7 +106,7 @@ builds:
       - darwin
     goarch:
       - amd64
-    ldflags: -s -w -X main.apk={{ .Env.IMAGE_VERSION }}
+    ldflags: -s -w -X main.imageVersion={{ .Env.IMAGE_VERSION }}
   - id: dnssec-signzone
     binary: dnssec-signzone
     env:
@@ -114,7 +117,7 @@ builds:
       - darwin
     goarch:
       - amd64
-    ldflags: -s -w -X main.apk={{ .Env.IMAGE_VERSION }}
+    ldflags: -s -w -X main.imageVersion={{ .Env.IMAGE_VERSION }}
   - id: dnssec-verify
     binary: dnssec-verify
     env:
@@ -125,7 +128,7 @@ builds:
       - darwin
     goarch:
       - amd64
-    ldflags: -s -w -X main.apk={{ .Env.IMAGE_VERSION }}
+    ldflags: -s -w -X main.imageVersion={{ .Env.IMAGE_VERSION }}
   - id: dnstap-read
     binary: dnstap-read
     env:
@@ -136,7 +139,7 @@ builds:
       - darwin
     goarch:
       - amd64
-    ldflags: -s -w -X main.apk={{ .Env.IMAGE_VERSION }}
+    ldflags: -s -w -X main.imageVersion={{ .Env.IMAGE_VERSION }}
   - id: host
     binary: host
     env:
@@ -147,7 +150,7 @@ builds:
       - darwin
     goarch:
       - amd64
-    ldflags: -s -w -X main.apk={{ .Env.IMAGE_VERSION }}
+    ldflags: -s -w -X main.imageVersion={{ .Env.IMAGE_VERSION }}
   - id: mdig
     binary: mdig
     env:
@@ -158,7 +161,7 @@ builds:
       - darwin
     goarch:
       - amd64
-    ldflags: -s -w -X main.apk={{ .Env.IMAGE_VERSION }}
+    ldflags: -s -w -X main.imageVersion={{ .Env.IMAGE_VERSION }}
   - id: named-checkconf
     binary: named-checkconf
     env:
@@ -169,7 +172,7 @@ builds:
       - darwin
     goarch:
       - amd64
-    ldflags: -s -w -X main.apk={{ .Env.IMAGE_VERSION }}
+    ldflags: -s -w -X main.imageVersion={{ .Env.IMAGE_VERSION }}
   - id: named-checkzone
     binary: named-checkzone
     env:
@@ -180,7 +183,7 @@ builds:
       - darwin
     goarch:
       - amd64
-    ldflags: -s -w -X main.apk={{ .Env.IMAGE_VERSION }}
+    ldflags: -s -w -X main.imageVersion={{ .Env.IMAGE_VERSION }}
   - id: named-compilezone
     binary: named-compilezone
     env:
@@ -191,7 +194,7 @@ builds:
       - darwin
     goarch:
       - amd64
-    ldflags: -s -w -X main.apk={{ .Env.IMAGE_VERSION }}
+    ldflags: -s -w -X main.imageVersion={{ .Env.IMAGE_VERSION }}
   - id: named-journalprint
     binary: named-journalprint
     env:
@@ -202,7 +205,7 @@ builds:
       - darwin
     goarch:
       - amd64
-    ldflags: -s -w -X main.apk={{ .Env.IMAGE_VERSION }}
+    ldflags: -s -w -X main.imageVersion={{ .Env.IMAGE_VERSION }}
   - id: named-rrchecker
     binary: named-rrchecker
     env:
@@ -213,7 +216,7 @@ builds:
       - darwin
     goarch:
       - amd64
-    ldflags: -s -w -X main.apk={{ .Env.IMAGE_VERSION }}
+    ldflags: -s -w -X main.imageVersion={{ .Env.IMAGE_VERSION }}
   - id: nsec3hash
     binary: nsec3hash
     env:
@@ -224,7 +227,7 @@ builds:
       - darwin
     goarch:
       - amd64
-    ldflags: -s -w -X main.apk={{ .Env.IMAGE_VERSION }}
+    ldflags: -s -w -X main.imageVersion={{ .Env.IMAGE_VERSION }}
   - id: nslookup
     binary: nslookup
     env:
@@ -235,7 +238,7 @@ builds:
       - darwin
     goarch:
       - amd64
-    ldflags: -s -w -X main.apk={{ .Env.IMAGE_VERSION }}
+    ldflags: -s -w -X main.imageVersion={{ .Env.IMAGE_VERSION }}
   - id: nsupdate
     binary: nsupdate
     env:
@@ -246,7 +249,7 @@ builds:
       - darwin
     goarch:
       - amd64
-    ldflags: -s -w -X main.apk={{ .Env.IMAGE_VERSION }}
+    ldflags: -s -w -X main.imageVersion={{ .Env.IMAGE_VERSION }}
   - id: rndc
     binary: rndc
     env:
@@ -257,7 +260,7 @@ builds:
       - darwin
     goarch:
       - amd64
-    ldflags: -s -w -X main.apk={{ .Env.IMAGE_VERSION }}
+    ldflags: -s -w -X main.imageVersion={{ .Env.IMAGE_VERSION }}
   - id: rndc-confgen
     binary: rndc-confgen
     env:
@@ -268,7 +271,7 @@ builds:
       - darwin
     goarch:
       - amd64
-    ldflags: -s -w -X main.apk={{ .Env.IMAGE_VERSION }}
+    ldflags: -s -w -X main.imageVersion={{ .Env.IMAGE_VERSION }}
   - id: tsig-keygen
     binary: tsig-keygen
     env:
@@ -279,7 +282,7 @@ builds:
       - darwin
     goarch:
       - amd64
-    ldflags: -s -w -X main.apk={{ .Env.IMAGE_VERSION }}
+    ldflags: -s -w -X main.imageVersion={{ .Env.IMAGE_VERSION }}
 archives:
   - files:
       - LICENSE
@@ -289,7 +292,7 @@ archives:
       mode: 0755
     name_template: "dcjulian29.apps.bind-via-docker_{{ .Version }}_{{ .Os }}"
     format_overrides:
-      - format: zip
+      - formats: [ "zip" ]
         goos: windows
 nfpms:
   - package_name: dcjulian29.apps.bind-via-docker
@@ -328,7 +331,7 @@ chocolateys:
     source_repo: "https://www.myget.org/F/dcjulian29-chocolatey/"
     skip_publish: false
 snapshot:
-  name_template: "{{ incpatch .Version }}-next"
+  version_template: "{{ incpatch .Version }}-next"
 changelog:
   sort: asc
   filters:
