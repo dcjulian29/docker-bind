@@ -30,7 +30,7 @@ jobs:
 
       - name: Grab the timestamp to use.
         id: v2
-        run: echo "timestamp=$(cat GITHUB_SHA:0:12)" >> $GITHUB_OUTPUT
+        run: echo "timestamp=${GITHUB_SHA:0:12}" >> $GITHUB_OUTPUT
 
       - name: Build the Docker image.
         uses: docker/build-push-action@v7
