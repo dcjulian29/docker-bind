@@ -55,10 +55,15 @@ func main() {
 	}
 
 	binary = fmt.Sprintf("%s/%s", prefix, binary)
-	data, work := docker.HostContainerVolume()
+	data, work, err := docker.HostContainerVolume()
+
+	if err != nil {
+		fmt.Println(textformat.Fatal(err.Error()))
+		os.Exit(1)
+	}
 
 	opts := docker.ContainerOptions{
-		AdditionalArgs:   strings.Join(args, " "),
+		AdditionalArgs:   args,
 		EntryPoint:       binary,
 		Image:            "dcjulian29/bind",
 		Interactive:      true,
